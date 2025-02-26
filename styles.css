@@ -119,6 +119,7 @@ body {
     width: 100%;
     padding-bottom: 56.25%; /* 16:9 aspect ratio */
     background: #f8f9fa;
+    overflow: hidden;
 }
 
 .video-wrapper video {
