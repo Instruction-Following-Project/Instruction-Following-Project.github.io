@@ -26,17 +26,17 @@ Your real-world application content here...
 function addVideo(videoUrl, containerId = 'experiment-video') {
     const container = document.querySelector(`#${containerId} .video-container`);
     
-    // Create and append video iframe
+    // Create video element instead of iframe
     const videoWrapper = document.createElement('div');
     videoWrapper.className = 'video-wrapper';
     
-    const iframe = document.createElement('iframe');
-    iframe.src = videoUrl;
-    iframe.frameBorder = "0";
-    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
-    iframe.allowFullscreen = true;
+    const video = document.createElement('video');
+    video.src = videoUrl;
+    video.controls = true;
+    video.style.width = '100%';
+    video.style.height = '100%';
     
-    videoWrapper.appendChild(iframe);
+    videoWrapper.appendChild(video);
     container.appendChild(videoWrapper);
 }
 
@@ -51,7 +51,7 @@ function initializeContent() {
     });
 
     // Add videos after content is rendered
-    addVideo('/videos/1.mp4');
+    addVideo('videos/1.mp4'); // 注意这里的路径格式
 }
 
 // 页面加载完成后初始化内容
