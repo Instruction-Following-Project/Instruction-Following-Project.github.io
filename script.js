@@ -1,38 +1,34 @@
 // Markdown content
 const content = {
     abstract: `
-Your abstract content here...
+Write your abstract here...
     `,
     overview: `
-Your overview content here...
+Write your overview here...
     `,
     pipeline: `
-Your pipeline content here...
+Write your pipeline description here...
     `,
     'experiment-video': `
 ## Experiments on ALFRED Benchmark
-
-Your ALFRED benchmark experiments content here...
+Description of ALFRED benchmark experiments...
 
 ## Real-World Instruction Following Application
-
-Your real-world application content here...
-
-### Demo Videos:
+Description of real-world applications...
     `
 };
 
 // Add video function
-function addVideo(videoUrl, containerId = 'experiment-video') {
-    const container = document.querySelector(`#${containerId} .video-container`);
+function addVideo(videoUrl, containerId) {
+    const container = document.querySelector(containerId);
     
-    // Create video element instead of iframe
     const videoWrapper = document.createElement('div');
     videoWrapper.className = 'video-wrapper';
     
     const video = document.createElement('video');
     video.src = videoUrl;
     video.controls = true;
+    video.preload = 'metadata';
     video.style.width = '100%';
     video.style.height = '100%';
     
@@ -50,9 +46,11 @@ function initializeContent() {
         }
     });
 
-    // Add videos after content is rendered
-    addVideo('videos/1.mp4'); // 注意这里的路径格式
+    // Add videos to Real-World section
+    addVideo('videos/1.mp4', '.real-world-videos');
+    addVideo('videos/2.mp4', '.real-world-videos');
+    addVideo('videos/3.mp4', '.real-world-videos');
 }
 
-// 页面加载完成后初始化内容
+// Initialize when page loads
 document.addEventListener('DOMContentLoaded', initializeContent); 
