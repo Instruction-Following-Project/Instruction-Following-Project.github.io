@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论文标题</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Markdown 解析器 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+    <!-- 标题区块 -->
+    <div class="block title-block">
+        <h1 class="main-title">论文标题</h1>
+        <div class="authors">
+            <span class="author">作者1</span>
+            <span class="author">作者2</span>
+            <span class="author">作者3</span>
+        </div>
+        <div class="affiliations">
+            <span class="affiliation">机构1</span>
+        </div>
+    </div>
+
+    <!-- Abstract 区块 -->
+    <div class="block" id="abstract">
+        <h2>Abstract</h2>
+        <div class="content markdown-content"></div>
+    </div>
+
+    <!-- Overview 区块 -->
+    <div class="block" id="overview">
+        <h2>Overview</h2>
+        <div class="content markdown-content"></div>
+    </div>
+
+    <!-- Pipeline 区块 -->
+    <div class="block" id="pipeline">
+        <h2>Pipeline</h2>
+        <div class="content markdown-content"></div>
+    </div>
+
+    <!-- 实验视频区块 -->
+    <div class="block" id="experiment-video">
+        <h2>Experiment Video</h2>
+        <div class="video-container">
+            <!-- 视频将通过 JavaScript 动态添加 -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
