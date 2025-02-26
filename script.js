@@ -21,10 +21,6 @@ Description of real-world applications...
 // Add video function
 function addVideo(videoUrl, containerId) {
     const container = document.querySelector(containerId);
-    if (!container) {
-        console.error('Video container not found:', containerId);
-        return;
-    }
     
     const videoWrapper = document.createElement('div');
     videoWrapper.className = 'video-wrapper';
@@ -33,19 +29,8 @@ function addVideo(videoUrl, containerId) {
     video.src = videoUrl;
     video.controls = true;
     video.preload = 'metadata';
-    video.playsInline = true;
-    video.muted = false;
-    video.autoplay = false;
-    
-    // 添加错误处理
-    video.onerror = function() {
-        console.error('Video error:', video.error);
-    };
-    
-    // 添加加载处理
-    video.onloadeddata = function() {
-        console.log('Video loaded successfully:', videoUrl);
-    };
+    video.style.width = '100%';
+    video.style.height = '100%';
     
     videoWrapper.appendChild(video);
     container.appendChild(videoWrapper);
@@ -61,11 +46,10 @@ function initializeContent() {
         }
     });
 
-    // Add local videos
-    console.log('Adding videos...');
-    addVideo('./videos/1.mp4', '.real-world-videos');
-    addVideo('./videos/2.mp4', '.real-world-videos');
-    addVideo('./videos/3.mp4', '.real-world-videos');
+    // Add videos to Real-World section
+    addVideo('videos/1.mp4', '.real-world-videos');
+    addVideo('videos/2.mp4', '.real-world-videos');
+    addVideo('videos/3.mp4', '.real-world-videos');
 }
 
 // Initialize when page loads
