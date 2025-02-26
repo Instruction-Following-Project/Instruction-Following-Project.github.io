@@ -1,27 +1,41 @@
-// Markdown 内容
+// Markdown content
 const content = {
     abstract: `
-# 在这里输入 Abstract 的 Markdown 内容
-- 支持 Markdown 格式
-- 可以添加列表、链接等
+Your abstract content here...
     `,
     overview: `
-# 在这里输入 Overview 的 Markdown 内容
+Your overview content here...
     `,
     pipeline: `
-# 在这里输入 Pipeline 的 Markdown 内容
+Your pipeline content here...
+    `,
+    'experiment-video': `
+## Experiments on ALFRED Benchmark
+
+Your ALFRED benchmark experiments content here...
+
+## Real-World Instruction Following Application
+
+Your real-world application content here...
+
+### Demo Videos:
     `
 };
 
-// 初始化函数
+// Initialize function
 function initializeContent() {
-    // 渲染 Markdown 内容
+    // Render Markdown content
     Object.keys(content).forEach(key => {
         const element = document.querySelector(`#${key} .markdown-content`);
         if (element) {
             element.innerHTML = marked.parse(content[key]);
         }
     });
+
+    // Add videos after content is rendered
+    addVideo('1.mp4', 'experiment-video');
+    addVideo('2.mp4', 'experiment-video');
+    addVideo('3.mp4', 'experiment-video');
 }
 
 // 页面加载完成后初始化内容

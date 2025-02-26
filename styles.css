@@ -71,4 +71,50 @@ body {
 .markdown-content img {
     max-width: 100%;
     height: auto;
+}
+
+/* Header Image */
+.header-image {
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Link Buttons */
+.link-buttons {
+    margin-top: 30px;
+}
+
+.button {
+    display: inline-block;
+    padding: 8px 20px;
+    margin: 0 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.button.primary {
+    background-color: #2196F3;
+    color: white;
+}
+
+.button.primary:hover {
+    background-color: #1976D2;
+}
+
+.button.secondary {
+    background-color: #e9ecef;
+    color: #666;
+    cursor: default;
 } 
