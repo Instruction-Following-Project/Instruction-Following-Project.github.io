@@ -18,21 +18,20 @@ Description of real-world applications...
     `
 };
 
-// Add video function
+// Add video function for iframe
 function addVideo(videoUrl, containerId) {
     const container = document.querySelector(containerId);
     
     const videoWrapper = document.createElement('div');
     videoWrapper.className = 'video-wrapper';
     
-    const video = document.createElement('video');
-    video.src = videoUrl;
-    video.controls = true;
-    video.preload = 'metadata';
-    video.style.width = '100%';
-    video.style.height = '100%';
+    const iframe = document.createElement('iframe');
+    iframe.src = videoUrl;
+    iframe.frameBorder = "0";
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    iframe.allowFullscreen = true;
     
-    videoWrapper.appendChild(video);
+    videoWrapper.appendChild(iframe);
     container.appendChild(videoWrapper);
 }
 
@@ -46,10 +45,10 @@ function initializeContent() {
         }
     });
 
-    // Add videos to Real-World section
-    addVideo('videos/1.mp4', '.real-world-videos');
-    addVideo('videos/2.mp4', '.real-world-videos');
-    addVideo('videos/3.mp4', '.real-world-videos');
+    // 使用 YouTube 嵌入链接
+    addVideo('https://www.youtube.com/embed/VIDEO_ID_1', '.real-world-videos');
+    addVideo('https://www.youtube.com/embed/VIDEO_ID_2', '.real-world-videos');
+    addVideo('https://www.youtube.com/embed/VIDEO_ID_3', '.real-world-videos');
 }
 
 // Initialize when page loads
