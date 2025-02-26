@@ -24,14 +24,8 @@ Your real-world application content here...
 
 // Add video function
 function addVideo(videoUrl, containerId = 'experiment-video') {
-    // Create a new video container if it doesn't exist
-    let container = document.querySelector(`#${containerId} .video-container`);
-    if (!container) {
-        container = document.createElement('div');
-        container.className = 'video-container';
-        document.querySelector(`#${containerId}`).appendChild(container);
-    }
-
+    const container = document.querySelector(`#${containerId} .video-container`);
+    
     // Create and append video iframe
     const videoWrapper = document.createElement('div');
     videoWrapper.className = 'video-wrapper';
@@ -57,9 +51,7 @@ function initializeContent() {
     });
 
     // Add videos after content is rendered
-    addVideo('1.mp4');
-    addVideo('2.mp4');
-    addVideo('3.mp4');
+    addVideo('/videos/1.mp4');
 }
 
 // 页面加载完成后初始化内容
