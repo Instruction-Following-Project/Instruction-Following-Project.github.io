@@ -9,12 +9,11 @@ TODO...
     pipeline: `
 TODO...
 `,
-    'experiment-video': `
-## Experiments on ALFRED Benchmark
-TODO...
-
-## Real-World Instruction Following Application
-TODO...
+    'alfred-description': `
+TODO: ALFRED Benchmark experiments description...
+`,
+    'real-world-description': `
+TODO: Real-world instruction following experiments description...
 `
 };
 
@@ -38,13 +37,24 @@ function addVideo(videoUrl, containerId) {
 
 // Initialize function
 function initializeContent() {
-    // Render Markdown content
-    Object.keys(content).forEach(key => {
+    // Render Markdown content for main sections
+    ['abstract', 'overview', 'pipeline'].forEach(key => {
         const element = document.querySelector(`#${key} .markdown-content`);
         if (element) {
             element.innerHTML = marked.parse(content[key]);
         }
     });
+
+    // Render Markdown content for video sections
+    const alfredDesc = document.querySelector('.alfred-description');
+    if (alfredDesc) {
+        alfredDesc.innerHTML = marked.parse(content['alfred-description']);
+    }
+
+    const realWorldDesc = document.querySelector('.real-world-description');
+    if (realWorldDesc) {
+        realWorldDesc.innerHTML = marked.parse(content['real-world-description']);
+    }
 
     // Add videos to Real-World section
     addVideo('videos/1.mp4', '.real-world-videos');
