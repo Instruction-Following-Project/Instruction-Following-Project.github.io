@@ -8,6 +8,15 @@
     <!-- Markdown 解析器 -->
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     <style>
+        body {
+            overflow-x: auto;  /* 允许水平滚动 */
+            min-width: 800px;  /* 设置最小宽度，防止内容过度挤压 */
+        }
+        
+        .markdown-content {
+            overflow-x: auto;  /* 允许内容区域水平滚动 */
+        }
+        
         .markdown-content img {
             height: auto;
             display: block;
