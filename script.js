@@ -6,16 +6,16 @@ Robotic instruction following tasks require seamless integration of visual perce
     overview: `
 TBD...
 
-![Method Overview](images/3-method-overview.svg)
+<img src="images/3-method-overview.svg" style="max-width: 85%;" />
 `,
     pipeline: `
 TBD...
 
-![Multi-stage Task Planning Pipeline](images/3-method-CTP.svg)
+<img src="images/3-method-CTP.svg" style="max-width: 95%;" />
 
 TBD...
 
-![Context-aligned Target Localization](images/3-method-CSP.svg)
+<img src="images/3-method-CSP.svg" style="max-width: 70%;" />
 
 `,
     'alfred-description': `
