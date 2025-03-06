@@ -5,6 +5,8 @@ Robotic instruction following tasks require seamless integration of visual perce
 `,
     overview: `
 TBD...
+
+![Method Overview](images/3-method-overview.svg)
 `,
     pipeline: `
 TBD...
