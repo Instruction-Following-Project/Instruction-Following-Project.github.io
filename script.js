@@ -10,6 +10,13 @@ TBD...
 `,
     pipeline: `
 TBD...
+
+![Multi-stage Task Planning Pipeline](images/4-method-CTP.svg)
+
+TBD...
+
+![Context-aligned Target Localization](images/4-method-CSP.svg)
+
 `,
     'alfred-description': `
 TBD...
