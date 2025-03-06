@@ -6,7 +6,7 @@ Robotic instruction following tasks require seamless integration of visual perce
     overview: `
 TBD...
 
-<img src="images/3-method-overview.svg" style="max-width: 85%;" />
+<img src="images/3-method-overview.svg" style="max-width: 80%;" />
 `,
     pipeline: `
 TBD...
@@ -15,7 +15,7 @@ TBD...
 
 TBD...
 
-<img src="images/3-method-CSP.svg" style="max-width: 70%;" />
+<img src="images/3-method-CSP.svg" style="max-width: 65%;" />
 
 `,
     'alfred-description': `
