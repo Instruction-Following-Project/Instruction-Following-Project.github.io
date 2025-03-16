@@ -18,23 +18,22 @@ Context-Aligned Target Localization combines two complementary processes. Object
 <img src="images/3-method-CSP.svg" style="max-width: 65%;" />
 
 `,
-//     'alfred-description': `
-// FlowPlan outperforms previous zero-shot methods and achieves competitive results against data-driven in-context learning approaches on the ALFRED benchmark. The framework demonstrates robust performance across diverse environments, significantly improving task success rates compared to prior zero-shot solutions.
+    'alfred-description': `
+FlowPlan outperforms previous zero-shot methods and achieves competitive results against data-driven in-context learning approaches on the ALFRED benchmark. The framework demonstrates robust performance across diverse environments, significantly improving task success rates compared to prior zero-shot solutions.
 
-// `,
-
-//     'real-world-description': `
-// FlowPlan is validated on a Franka Emika FR3 robot in a kitchen-like setup with 100% task planning precision across 50 trials. It handles diverse instructions (e.g., "Place tissue pack on the pan near the cooker") by directly integrating with vision systems (SAM for segmentation, Contact-GraspNet for grasping). The framework adapts to new tasks/environments via natural language constraint descriptions, eliminating manual example curation or model retraining.
-// `
-'alfred-description': `
-TBD ...
 `,
 
     'real-world-description': `
-TBD...
+FlowPlan is validated on a Franka Emika FR3 robot in a kitchen-like setup with 100% task planning precision across 50 trials. It handles diverse instructions (e.g., "Place tissue pack on the pan near the cooker") by directly integrating with vision systems (SAM for segmentation, Contact-GraspNet for grasping). The framework adapts to new tasks/environments via natural language constraint descriptions, eliminating manual example curation or model retraining.
 `
 
+// 'alfred-description': `
+// TBD ...
+// `,
 
+//     'real-world-description': `
+// TBD...
+// `
 
 };
 
@@ -77,10 +76,19 @@ function initializeContent() {
         realWorldDesc.innerHTML = marked.parse(content['real-world-description']);
     }
 
+
+
+    // Add videos to ALFRED section
+    addVideo('videos/sim1.mp4', '.alfred-videos');
+    addVideo('videos/sim2.mp4', '.alfred-videos');
+    addVideo('videos/sim3.mp4', '.alfred-videos');
+
+
+
     // Add videos to Real-World section
-    addVideo('videos/1.mp4', '.real-world-videos');
-    addVideo('videos/2.mp4', '.real-world-videos');
-    addVideo('videos/3.mp4', '.real-world-videos');
+    addVideo('videos/real1.mp4', '.real-world-videos');
+    addVideo('videos/real2.mp4', '.real-world-videos');
+    addVideo('videos/real3.mp4', '.real-world-videos');
 }
 
 // Initialize when page loads
