@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FlowPlan: Zero-Shot Task Planning with LLM Flow Engineering for Robotic Instruction Following</title>
     <link rel="stylesheet" href="styles.css">
-    <!-- Markdown 解析器 -->
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- 修改 Markdown 解析器的引入方式 -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@4.3.0/marked.min.js"></script>
+    <script>
+        // 添加调试信息
+        window.addEventListener('load', function() {
+            console.log('Marked.js loaded:', typeof marked);
+        });
+    </script>
     <style>
         body {
             overflow-x: auto;  /* 允许水平滚动 */

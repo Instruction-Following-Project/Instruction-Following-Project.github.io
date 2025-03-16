@@ -28,11 +28,15 @@ FlowPlan is validated on a Franka Emika FR3 robot in a kitchen-like setup with 1
 `
 };
 
-// 配置 marked.js 以正确处理图片路径
-marked.setOptions({
-    breaks: true,
-    gfm: true
-});
+// 配置 marked.js
+function configureMarked() {
+    marked.setOptions({
+        breaks: true,
+        gfm: true,
+        headerIds: true,
+        mangle: false
+    });
+}
 
 // Add video function
 function addVideo(videoUrl, containerId) {
@@ -59,41 +63,58 @@ function addVideo(videoUrl, containerId) {
     container.appendChild(videoWrapper);
 }
 
-// Initialize function
-function initializeContent() {
-    // 先确保 marked.js 已加载
-    if (typeof marked === 'undefined') {
-        console.error('Marked.js is not loaded');
+// 渲染 Markdown 内容的函数
+function renderMarkdownContent(elementSelector, markdownText) {
+    const element = document.querySelector(elementSelector);
+    if (!element) {
+        console.error(`Element not found: ${elementSelector}`);
         return;
     }
+    try {
+        const htmlContent = marked.parse(markdownText);
+        element.innerHTML = htmlContent;
+        console.log(`Content rendered for ${elementSelector}`);
+    } catch (error) {
+        console.error(`Error rendering markdown for ${elementSelector}:`, error);
+    }
+}
 
-    // Render Markdown content for main sections
+// Initialize function
+function initializeContent() {
+    console.log('Initializing content...');
+    
+    // 配置 marked
+    configureMarked();
+    
+    // 渲染主要部分
     ['abstract', 'overview', 'pipeline'].forEach(key => {
-        const element = document.querySelector(`#${key} .markdown-content`);
-        if (element) {
-            element.innerHTML = marked.parse(content[key]);
-        }
+        console.log(`Rendering ${key}...`);
+        renderMarkdownContent(`#${key} .markdown-content`, content[key]);
     });
 
-    // Render Markdown content for video sections
-    const alfredDesc = document.querySelector('.alfred-description');
-    if (alfredDesc) {
-        alfredDesc.innerHTML = marked.parse(content['alfred-description']);
-    }
+    // 渲染视频描述部分
+    console.log('Rendering video descriptions...');
+    renderMarkdownContent('.alfred-description', content['alfred-description']);
+    renderMarkdownContent('.real-world-description', content['real-world-description']);
 
-    const realWorldDesc = document.querySelector('.real-world-description');
-    if (realWorldDesc) {
-        realWorldDesc.innerHTML = marked.parse(content['real-world-description']);
-    }
-
-    // Add videos to Real-World section
+    // 添加视频
+    console.log('Adding videos...');
     const realWorldVideosContainer = document.querySelector('.real-world-videos');
     if (realWorldVideosContainer) {
         addVideo('videos/1.mp4', '.real-world-videos');
         addVideo('videos/2.mp4', '.real-world-videos');
         addVideo('videos/3.mp4', '.real-world-videos');
+    } else {
+        console.error('Real world videos container not found');
     }
 }
 
-// 等待 DOM 和资源加载完成后再初始化
-window.addEventListener('load', initializeContent); 
+// 确保在 DOM 加载完成后再初始化
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content Loaded');
+    if (typeof marked === 'undefined') {
+        console.error('Marked.js is not loaded!');
+        return;
+    }
+    initializeContent();
+}); 
