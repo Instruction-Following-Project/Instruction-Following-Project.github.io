@@ -74,19 +74,15 @@ function initializeContent() {
         realWorldDesc.innerHTML = marked.parse(content['real-world-description']);
     }
 
-
-
     // Add videos to ALFRED section
-    addVideo('videos/sim1.mp4', '.alfred-videos');
-    addVideo('videos/sim2.mp4', '.alfred-videos');
-    addVideo('videos/sim3.mp4', '.alfred-videos');
-
-
+    addVideo('videos/sim1.mp4', '#alfred-video-1');
+    addVideo('videos/sim2.mp4', '#alfred-video-2');
+    addVideo('videos/sim3.mp4', '#alfred-video-3');
 
     // Add videos to Real-World section
-    addVideo('videos/real1.mp4', '.real-world-videos');
-    addVideo('videos/real2.mp4', '.real-world-videos');
-    addVideo('videos/real3.mp4', '.real-world-videos');
+    addVideo('videos/real1.mp4', '#real-world-video-1');
+    addVideo('videos/real2.mp4', '#real-world-video-2');
+    addVideo('videos/real3.mp4', '#real-world-video-3');
 }
 
 // Initialize when page loads
