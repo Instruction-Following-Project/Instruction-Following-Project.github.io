@@ -41,18 +41,15 @@ FlowPlan is validated on a Franka Emika FR3 robot in a kitchen-like setup with 1
 function addVideo(videoUrl, containerId) {
     const container = document.querySelector(containerId);
     
-    const videoWrapper = document.createElement('div');
-    videoWrapper.className = 'video-wrapper';
-    
     const video = document.createElement('video');
     video.src = videoUrl;
     video.controls = true;
     video.preload = 'metadata';
     video.style.display = 'block';
     video.style.margin = '0';
+    video.style.width = '100%';
     
-    videoWrapper.appendChild(video);
-    container.appendChild(videoWrapper);
+    container.appendChild(video);
 }
 
 // Initialize function

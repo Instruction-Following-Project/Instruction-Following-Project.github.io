@@ -98,23 +98,24 @@ body {
 }
 
 /* Video Section */
-.videos-section {
-    margin-top: 20px;
+.video-section {
+    margin: 0;
+    padding: 0;
 }
 
-.videos-section h3 {
-    margin: 20px 0 10px;
-    color: #333;
+.video-section h2 {
+    margin-bottom: 10px;
 }
 
 .video-container {
-    margin-top: 10px;
+    margin: 0;
+    padding: 0;
 }
 
 .video-wrapper {
     position: relative;
     width: 70%;
-    margin: 0.5em auto;
+    margin: 10px auto;
     max-width: 1000px;
     background: none;
 }
@@ -125,6 +126,17 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     display: block;
+    margin: 0;
+    padding: 0;
+}
+
+/* 专门处理视频块的样式 */
+#experiment-video.block {
+    padding: 20px;
+}
+
+#experiment-video .markdown-content {
+    margin-bottom: 10px;
 }
 
 /* Markdown Content */
