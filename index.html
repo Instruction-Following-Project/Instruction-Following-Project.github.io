@@ -34,12 +34,18 @@
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         }
 
-        /* 新增实验视频容器样式 */
+        /* 视频部分样式 */
+        .video-section {
+            margin: 0;
+            padding: 0;
+        }
+
         .video-wrapper {
-            margin: 0.5em auto;    /* 减小上下边距 */
+            margin: 0.5em auto;
             width: 70%;
             max-width: 1000px;
             background: none;
+            line-height: 0;
         }
 
         .video-wrapper video {
@@ -48,15 +54,16 @@
             width: 100% !important;
             height: auto !important;
             display: block;
-            margin: 0;            /* 确保视频元素没有边距 */
-            padding: 0;           /* 确保视频元素没有内边距 */
+            margin: 0;
+            padding: 0;
         }
 
-        /* 视频容器的父级div样式 */
+        /* 视频容器样式 */
         #alfred-video-1, #alfred-video-2, #alfred-video-3,
         #real-world-video-1, #real-world-video-2, #real-world-video-3 {
-            margin: 0;            /* 移除容器的边距 */
-            padding: 0;           /* 移除容器的内边距 */
+            margin: 0;
+            padding: 0;
+            line-height: 0;
         }
     </style>
 </head>

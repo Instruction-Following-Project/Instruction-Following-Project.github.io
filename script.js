@@ -48,6 +48,8 @@ function addVideo(videoUrl, containerId) {
     video.src = videoUrl;
     video.controls = true;
     video.preload = 'metadata';
+    video.style.display = 'block';
+    video.style.margin = '0';
     
     videoWrapper.appendChild(video);
     container.appendChild(videoWrapper);
@@ -87,3 +89,7 @@ function initializeContent() {
 
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', initializeContent); 
+
+
+
+
