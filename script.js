@@ -48,8 +48,6 @@ function addVideo(videoUrl, containerId) {
     video.src = videoUrl;
     video.controls = true;
     video.preload = 'metadata';
-    video.style.width = '100%';
-    video.style.height = '100%';
     
     videoWrapper.appendChild(video);
     container.appendChild(videoWrapper);
