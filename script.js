@@ -23,15 +23,24 @@ FlowPlan outperforms previous zero-shot methods and achieves competitive results
 
 `,
 
-
     'real-world-description': `
 FlowPlan is validated on a Franka Emika FR3 robot in a kitchen-like setup with 100% task planning precision across 50 trials. It handles diverse instructions (e.g., "Place tissue pack on the pan near the cooker") by directly integrating with vision systems (SAM for segmentation, Contact-GraspNet for grasping). The framework adapts to new tasks/environments via natural language constraint descriptions, eliminating manual example curation or model retraining.
 `
 };
 
+// 配置 marked.js 以正确处理图片路径
+marked.setOptions({
+    breaks: true,
+    gfm: true
+});
+
 // Add video function
 function addVideo(videoUrl, containerId) {
     const container = document.querySelector(containerId);
+    if (!container) {
+        console.error(`Container ${containerId} not found`);
+        return;
+    }
     
     const videoWrapper = document.createElement('div');
     videoWrapper.className = 'video-wrapper';
@@ -42,6 +51,9 @@ function addVideo(videoUrl, containerId) {
     video.preload = 'metadata';
     video.style.width = '100%';
     video.style.height = '100%';
+    video.style.maxWidth = '800px';
+    video.style.margin = '20px auto';
+    video.style.display = 'block';
     
     videoWrapper.appendChild(video);
     container.appendChild(videoWrapper);
@@ -49,6 +61,12 @@ function addVideo(videoUrl, containerId) {
 
 // Initialize function
 function initializeContent() {
+    // 先确保 marked.js 已加载
+    if (typeof marked === 'undefined') {
+        console.error('Marked.js is not loaded');
+        return;
+    }
+
     // Render Markdown content for main sections
     ['abstract', 'overview', 'pipeline'].forEach(key => {
         const element = document.querySelector(`#${key} .markdown-content`);
@@ -69,10 +87,13 @@ function initializeContent() {
     }
 
     // Add videos to Real-World section
-    addVideo('videos/1.mp4', '.real-world-videos');
-    addVideo('videos/2.mp4', '.real-world-videos');
-    addVideo('videos/3.mp4', '.real-world-videos');
+    const realWorldVideosContainer = document.querySelector('.real-world-videos');
+    if (realWorldVideosContainer) {
+        addVideo('videos/1.mp4', '.real-world-videos');
+        addVideo('videos/2.mp4', '.real-world-videos');
+        addVideo('videos/3.mp4', '.real-world-videos');
+    }
 }
 
-// Initialize when page loads
-document.addEventListener('DOMContentLoaded', initializeContent); 
+// 等待 DOM 和资源加载完成后再初始化
+window.addEventListener('load', initializeContent); 
