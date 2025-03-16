@@ -9,7 +9,7 @@ FlowPlan introduces a novel structured workflow for zero-shot robotic instructio
 <img src="images/3-method-overview.svg" style="max-width: 80%;" />
 `,
     pipeline: `
-Multi-Stage Task Planning transforms instructions into actionable sequences through four integrated steps. First, Task Information Retrieval classifies tasks into predefined categories (e.g., Clean & Place) and retrieves associated constraints. Next, Language-Level Reasoning converts natural language into human-readable action sequences, resolving ambiguities using operational rules. This transitions to Symbolic-Level Planning, which translates these sequences into executable robotic actions (e.g., ``pick_up("Rag", "Tub")``) while extracting spatial context for localization. Finally, Logical Evaluation validates plans against hard constraints (e.g., action order rules) and corrects any invalid components within the plan.
+Multi-Stage Task Planning transforms instructions into actionable sequences through four integrated steps. First, Task Information Retrieval classifies tasks into predefined categories (e.g., Clean & Place) and retrieves associated constraints. Next, Language-Level Reasoning converts natural language into human-readable action sequences, resolving ambiguities using operational rules. This transitions to Symbolic-Level Planning, which translates these sequences into executable robotic actions (e.g., \`\`pick_up("Rag", "Tub")\`\`) while extracting spatial context for localization. Finally, Logical Evaluation validates plans against hard constraints (e.g., action order rules) and corrects any invalid components within the plan.
 
 <img src="images/3-method-CTP.svg" style="max-width: 95%;" />
 
@@ -28,23 +28,9 @@ FlowPlan is validated on a Franka Emika FR3 robot in a kitchen-like setup with 1
 `
 };
 
-// 配置 marked.js
-function configureMarked() {
-    marked.setOptions({
-        breaks: true,
-        gfm: true,
-        headerIds: true,
-        mangle: false
-    });
-}
-
 // Add video function
 function addVideo(videoUrl, containerId) {
     const container = document.querySelector(containerId);
-    if (!container) {
-        console.error(`Container ${containerId} not found`);
-        return;
-    }
     
     const videoWrapper = document.createElement('div');
     videoWrapper.className = 'video-wrapper';
@@ -55,66 +41,37 @@ function addVideo(videoUrl, containerId) {
     video.preload = 'metadata';
     video.style.width = '100%';
     video.style.height = '100%';
-    video.style.maxWidth = '800px';
-    video.style.margin = '20px auto';
-    video.style.display = 'block';
     
     videoWrapper.appendChild(video);
     container.appendChild(videoWrapper);
 }
 
-// 渲染 Markdown 内容的函数
-function renderMarkdownContent(elementSelector, markdownText) {
-    const element = document.querySelector(elementSelector);
-    if (!element) {
-        console.error(`Element not found: ${elementSelector}`);
-        return;
-    }
-    try {
-        const htmlContent = marked.parse(markdownText);
-        element.innerHTML = htmlContent;
-        console.log(`Content rendered for ${elementSelector}`);
-    } catch (error) {
-        console.error(`Error rendering markdown for ${elementSelector}:`, error);
-    }
-}
-
 // Initialize function
 function initializeContent() {
-    console.log('Initializing content...');
-    
-    // 配置 marked
-    configureMarked();
-    
-    // 渲染主要部分
+    // Render Markdown content for main sections
     ['abstract', 'overview', 'pipeline'].forEach(key => {
-        console.log(`Rendering ${key}...`);
-        renderMarkdownContent(`#${key} .markdown-content`, content[key]);
+        const element = document.querySelector(`#${key} .markdown-content`);
+        if (element) {
+            element.innerHTML = marked.parse(content[key]);
+        }
     });
 
-    // 渲染视频描述部分
-    console.log('Rendering video descriptions...');
-    renderMarkdownContent('.alfred-description', content['alfred-description']);
-    renderMarkdownContent('.real-world-description', content['real-world-description']);
-
-    // 添加视频
-    console.log('Adding videos...');
-    const realWorldVideosContainer = document.querySelector('.real-world-videos');
-    if (realWorldVideosContainer) {
-        addVideo('videos/1.mp4', '.real-world-videos');
-        addVideo('videos/2.mp4', '.real-world-videos');
-        addVideo('videos/3.mp4', '.real-world-videos');
-    } else {
-        console.error('Real world videos container not found');
+    // Render Markdown content for video sections
+    const alfredDesc = document.querySelector('.alfred-description');
+    if (alfredDesc) {
+        alfredDesc.innerHTML = marked.parse(content['alfred-description']);
     }
+
+    const realWorldDesc = document.querySelector('.real-world-description');
+    if (realWorldDesc) {
+        realWorldDesc.innerHTML = marked.parse(content['real-world-description']);
+    }
+
+    // Add videos to Real-World section
+    addVideo('videos/1.mp4', '.real-world-videos');
+    addVideo('videos/2.mp4', '.real-world-videos');
+    addVideo('videos/3.mp4', '.real-world-videos');
 }
 
-// 确保在 DOM 加载完成后再初始化
-document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM Content Loaded');
-    if (typeof marked === 'undefined') {
-        console.error('Marked.js is not loaded!');
-        return;
-    }
-    initializeContent();
-}); 
+// Initialize when page loads
+document.addEventListener('DOMContentLoaded', initializeContent); 
