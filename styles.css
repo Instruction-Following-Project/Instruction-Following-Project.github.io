@@ -115,7 +115,7 @@ body {
 .video-wrapper {
     position: relative;
     width: 70%;
-    margin: 10px auto;
+    margin: 1.5em auto;
     max-width: 1000px;
     background: none;
 }
