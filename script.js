@@ -9,7 +9,7 @@ FlowPlan introduces a novel structured workflow for zero-shot robotic instructio
 <img src="images/3-method-overview.svg" style="max-width: 80%;" />
 `,
     pipeline: `
-Multi-Stage Task Planning transforms instructions into actionable sequences through four integrated steps. First, Task Information Retrieval classifies tasks into predefined categories (e.g., Clean & Place) and retrieves associated constraints. Next, Language-Level Reasoning converts natural language into human-readable action sequences, resolving ambiguities using operational rules. This transitions to Symbolic-Level Planning, which translates these sequences into executable robotic actions (e.g., \`\`pick_up("Rag", "Tub")\`\`) while extracting spatial context for localization. Finally, Logical Evaluation validates plans against hard constraints (e.g., action order rules) and corrects any invalid components within the plan.
+Multi-Stage Task Planning transforms instructions into actionable sequences through four integrated steps. First, Task Information Retrieval classifies tasks into predefined categories (e.g., Clean & Place) and retrieves associated constraints. Next, Language-Level Reasoning converts natural language into human-readable action sequences, resolving ambiguities using operational rules. This transitions to Symbolic-Level Planning, which translates these sequences into executable robotic actions (e.g., \`\`pick_up("Rag", "The rag on the tub")\`\`) while extracting spatial context for localization. Finally, Logical Evaluation validates plans against hard constraints (e.g., action order rules) and corrects any invalid components within the plan.
 
 <img src="images/3-method-CTP.svg" style="max-width: 95%;" />
 
